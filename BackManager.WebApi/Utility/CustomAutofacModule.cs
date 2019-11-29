@@ -1,15 +1,12 @@
 ﻿using Autofac;
+using BackManager.Application;
 using BackManager.Domain;
 using BackManager.Infrastructure;
 using BackManager.Utility;
 using BackManager.WebApi.Signal;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UnitOfWork;
-using UnitOfWork.Customer;
 
 namespace BackManager.WebApi.Utility
 {
@@ -44,7 +41,7 @@ namespace BackManager.WebApi.Utility
               .AsImplementedInterfaces()
               .InstancePerLifetimeScope();
 
-            //builder.RegisterType<SysHub>();
+            builder.RegisterType<SysHub>();
 
             //属性注入
             {

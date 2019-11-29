@@ -9,21 +9,6 @@ namespace BackManager.Domain
 
     public class Entity<TPrimaryKey> : IEntity<TPrimaryKey>
     {
-        /// <summary>
-        /// Desc:删除时间
-        /// Default:
-        /// Nullable:True
-        /// </summary>           
-        public DateTime? DeletedAt { get; set; }
-
-        /// <summary>
-        /// Desc:删除用户
-        /// Default:
-        /// Nullable:True
-        /// </summary>           
-        public long? DeleteUserId { get; set; }
-        public int DeleteFlag { get; set; } = 0;
-
         public virtual TPrimaryKey ID { get; set; }
 
         public override bool Equals(object obj)

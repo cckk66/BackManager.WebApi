@@ -5,12 +5,11 @@ using BackManager.Domain;
 using BackManager.Utility;
 using BackManager.Utility.Extension.ExpressionToSql;
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace UnitOfWork.Customer
+namespace BackManager.Application
 {
     public class SysUserService : ISysUserService
     {

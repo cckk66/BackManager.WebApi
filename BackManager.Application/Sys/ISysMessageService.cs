@@ -1,7 +1,7 @@
 ﻿using BackManager.Common.DtoModel.Model.SysModel;
 using BackManager.Domain;
 
-namespace UnitOfWork.Customer
+namespace BackManager.Application
 {
     public interface ISysMessageService : IDataEntityAsync<SysMessageDto>
     {

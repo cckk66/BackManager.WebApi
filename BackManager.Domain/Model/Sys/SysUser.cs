@@ -7,7 +7,7 @@ namespace BackManager.Domain
     /// SysUser
     /// </summary>
     //[Table("SysUser")]
-    public class SysUser : AggregateRoot
+    public class SysUser : BasicBusinessAggregateRoot
     {
 
 

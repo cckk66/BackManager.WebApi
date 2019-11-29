@@ -5,7 +5,7 @@ using BackManager.Common.DtoModel.Model.Login;
 using BackManager.Common.DtoModel.Model.RouterDto;
 using BackManager.Domain;
 
-namespace UnitOfWork.Customer
+namespace BackManager.Application
 {
     public interface ISysMenuService : IDataEntityAsync<SysMenuDto>
     {

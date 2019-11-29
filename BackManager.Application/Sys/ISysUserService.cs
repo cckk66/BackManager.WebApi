@@ -3,7 +3,7 @@ using BackManager.Common.DtoModel;
 using BackManager.Common.DtoModel.Model.Login;
 using BackManager.Domain;
 
-namespace UnitOfWork.Customer
+namespace BackManager.Application
 {
     public interface ISysUserService : IDataEntityAsync<SysUserDto>
     {

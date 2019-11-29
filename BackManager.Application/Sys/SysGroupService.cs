@@ -1,16 +1,13 @@
 ﻿using BackManager.Common.DtoModel;
 using BackManager.Common.DtoModel.Model;
-using BackManager.Common.DtoModel.Model.Login;
 using BackManager.Domain;
 using BackManager.Utility;
 using BackManager.Utility.Extension.ExpressionToSql;
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace UnitOfWork.Customer
+namespace BackManager.Application
 {
     public class SysGroupService : ISysGroupService
     {

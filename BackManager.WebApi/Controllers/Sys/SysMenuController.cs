@@ -1,10 +1,9 @@
-﻿using BackManager.Common.DtoModel.Model;
+﻿using BackManager.Application;
 using BackManager.Common.DtoModel.Model.SysModel.QueryParameter;
 using BackManager.Domain.DomainDrive;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using UnitOfWork.Customer;
 
 namespace BackManager.WebApi.Controllers.Sys
 {

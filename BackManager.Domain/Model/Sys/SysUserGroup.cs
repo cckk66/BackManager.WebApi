@@ -5,7 +5,7 @@ namespace BackManager.Domain
     /// <summary>
     /// SysUserGroup
     /// </summary>
-    public class SysUserGroup : AggregateRoot
+    public class SysUserGroup : BasicBusinessAggregateRoot
     {
 
 	

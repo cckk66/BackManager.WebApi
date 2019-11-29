@@ -62,6 +62,45 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:BackManager.WebApi.Controllers.Sys.SysMessageController">
+            <summary>
+            系统消息
+            </summary>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysMessageController.SysMessagePage(BackManager.Domain.DomainDrive.QueryParameter{BackManager.Common.DtoModel.Model.SysModel.QueryParameter.SysMessagePar})">
+            <summary>
+            用户系统消息分页
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysMessageController.SysMessageUpdate(BackManager.Common.DtoModel.Model.SysModel.SysMessageDto)">
+            <summary>
+            修改系统消息
+            </summary>
+            <param name="SysMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysMessageController.SysMessageAdd(BackManager.Common.DtoModel.Model.SysModel.SysMessageDto)">
+            <summary>
+            新增/修改系统消息
+            </summary>
+            <param name="SysMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysMessageController.SysMessageDelete(System.Int64[])">
+            <summary>
+            删除系统消息
+            </summary>
+            <param name="Ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysMessageController.GetSysMessage(System.Int64)">
+            <summary>
+            获取系统消息信息
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
         <member name="M:BackManager.WebApi.Controllers.Sys.SysUserController.GetSysUser(System.Int64)">
             <summary>
             用户测试
@@ -133,6 +172,34 @@
             <summary>
             用户id
             </summary>
+        </member>
+        <member name="T:BackManager.Utility.Middleware.ErrorMiddleware.MyErrorMiddleware">
+            <summary>
+            错误管道中间件
+            </summary>
+        </member>
+        <member name="M:BackManager.Utility.Middleware.ErrorMiddleware.MyErrorMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,BackManager.Application.IExceptionLogService)">
+            <summary>
+            DI,注入logger和环境变量
+            </summary>
+            <param name="next"></param>
+            <param name="env"></param>
+            <param name="exceptionLogService"></param>
+        </member>
+        <member name="M:BackManager.Utility.Middleware.ErrorMiddleware.MyErrorMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            实现Invoke方法
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.Utility.Middleware.ErrorMiddleware.MyErrorMiddleware.HandleError(Microsoft.AspNetCore.Http.HttpContext,System.Exception)">
+            <summary>
+            错误信息处理方法
+            </summary>
+            <param name="context"></param>
+            <param name="ex"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

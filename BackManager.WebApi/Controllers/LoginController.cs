@@ -1,10 +1,9 @@
-﻿using BackManager.Common.DtoModel;
+﻿using BackManager.Application;
+using BackManager.Common.DtoModel;
 using BackManager.Common.DtoModel.Model.Login;
-using BackManager.Common.DtoModel.Model.RouterDto;
 using BackManager.Domain;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using UnitOfWork.Customer;
 
 namespace BackManager.WebApi.Controllers
 {

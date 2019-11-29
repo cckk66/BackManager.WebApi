@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Mxlemon.Magic.Portal.DomainDrive
+namespace BackManager.Domain
 {
     /// <summary>
     /// 删除基类
     /// </summary>
-    public interface IDeleteEntity
+    public interface IDeleted
     {
         
         int DeleteFlag { get; set; }

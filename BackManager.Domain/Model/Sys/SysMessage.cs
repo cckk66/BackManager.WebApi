@@ -5,7 +5,7 @@ namespace BackManager.Domain.Model.Sys
     /// <summary>
     ///系统消息
     /// </summary>
-    public class SysMessage : AggregateRoot
+    public class SysMessage : BasicBusinessAggregateRoot
     {
         /// <summary>
         /// 消息标题

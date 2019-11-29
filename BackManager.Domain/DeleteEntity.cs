@@ -1,12 +1,11 @@
-﻿using Mxlemon.Magic.Portal.DomainDrive;
-using System;
+﻿using System;
 
 namespace BackManager.Domain
 {
     /// <summary>
     /// 删除基类
     /// </summary>
-    public class DeleteEntity: IDeleteEntity
+    public class DeleteEntity: IDeleted
     {
         
 

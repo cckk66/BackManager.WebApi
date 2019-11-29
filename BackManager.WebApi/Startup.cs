@@ -3,6 +3,7 @@ using BackManager.Domain;
 using BackManager.Utility;
 using BackManager.Utility.Filter;
 using BackManager.Utility.Middleware;
+using BackManager.Utility.Middleware.ErrorMiddleware;
 using BackManager.Utility.Tool.Swagger;
 using BackManager.WebApi.Signal;
 using BackManager.WebApi.Utility;
@@ -95,6 +96,7 @@ namespace BackManager.WebApi
             services.AddControllersWithViews(options =>
             {
                 //数据验证过滤器
+                options.Filters.Add<DataValidationActionFilter>();
                 options.Filters.Add<DataValidationActionFilter>();
 
             }).AddControllersAsServices().AddNewtonsoftJson(options =>
@@ -189,6 +191,8 @@ namespace BackManager.WebApi
             //表单重复提交
             //app.UseFormRepeatSubmitIntercept();
             app.UseCors("LimitRequests");//将 CORS 中间件添加到 web 应用程序管线中, 以允许跨域请求。
+
+            app.UseMiddleware<MyErrorMiddleware>();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<SysHub>("/chathub");

@@ -1,15 +1,14 @@
-﻿using System;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-using BackManager.Common.DtoModel.Model.SysModel;
+﻿using BackManager.Common.DtoModel.Model.SysModel;
 using BackManager.Common.DtoModel.Model.SysModel.QueryParameter;
 using BackManager.Domain;
 using BackManager.Domain.Model.Sys;
 using BackManager.Utility;
 using BackManager.Utility.Extension.ExpressionToSql;
-using UnitOfWork.Customer;
+using System;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 
-namespace BackManager.Application.Sys
+namespace BackManager.Application
 {
     public class SysMessageService : ISysMessageService
     {

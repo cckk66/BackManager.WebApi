@@ -4,7 +4,7 @@
     /// <summary>
     /// 菜单
     /// </summary>
-    public class SysMenu : AggregateRoot
+    public class SysMenu : BasicBusinessAggregateRoot
     {
 
         /// <summary>

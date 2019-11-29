@@ -19,9 +19,9 @@
             登录密码
             </summary>
         </member>
-        <member name="T:BackManager.Common.DtoModel.Model.SysGroupParameter">
+        <member name="T:BackManager.Common.DtoModel.Model.SysModel.ExceptionLogParameter">
             <summary>
-            用户分组查询
+            错误日志参数
             </summary>
         </member>
         <member name="P:BackManager.Common.DtoModel.Model.SysModel.QueryParameter.SysMessagePar.Title">
@@ -47,6 +47,11 @@
         <member name="P:BackManager.Common.DtoModel.Model.SysModel.SysMessageDto.Content">
             <summary>
             消息内容
+            </summary>
+        </member>
+        <member name="T:BackManager.Common.DtoModel.Model.SysGroupParameter">
+            <summary>
+            用户分组查询
             </summary>
         </member>
         <member name="P:BackManager.Common.DtoModel.SysGroupDto.GroupName">

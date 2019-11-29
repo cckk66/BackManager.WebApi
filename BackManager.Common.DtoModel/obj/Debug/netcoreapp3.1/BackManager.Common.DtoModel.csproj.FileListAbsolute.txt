@@ -1,12 +1,12 @@
 D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\bin\Debug\netcoreapp3.1\BackManager.Common.DtoModel.deps.json
 D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\bin\Debug\netcoreapp3.1\BackManager.Common.DtoModel.dll
 D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\bin\Debug\netcoreapp3.1\BackManager.Common.DtoModel.pdb
-D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\obj\Debug\netcoreapp3.1\BackManager.Common.DtoModel.AssemblyInfoInputs.cache
-D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\obj\Debug\netcoreapp3.1\BackManager.Common.DtoModel.AssemblyInfo.cs
-D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\obj\Debug\netcoreapp3.1\BackManager.Common.DtoModel.dll
-D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\obj\Debug\netcoreapp3.1\BackManager.Common.DtoModel.pdb
+D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\bin\Debug\netcoreapp3.1\BackManager.Common.DtoModel.xml
 D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\bin\Debug\netcoreapp3.1\BackManager.Domain.dll
 D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\bin\Debug\netcoreapp3.1\BackManager.Domain.pdb
 D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\obj\Debug\netcoreapp3.1\BackManager.Common.DtoModel.csprojAssemblyReference.cache
+D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\obj\Debug\netcoreapp3.1\BackManager.Common.DtoModel.AssemblyInfoInputs.cache
+D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\obj\Debug\netcoreapp3.1\BackManager.Common.DtoModel.AssemblyInfo.cs
 D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\obj\Debug\netcoreapp3.1\BackManager.Common.DtoModel.csproj.CopyComplete
-D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\bin\Debug\netcoreapp3.1\BackManager.Common.DtoModel.xml
+D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\obj\Debug\netcoreapp3.1\BackManager.Common.DtoModel.dll
+D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\obj\Debug\netcoreapp3.1\BackManager.Common.DtoModel.pdb

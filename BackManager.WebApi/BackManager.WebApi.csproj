@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.WebApi\BackManager.WebApi.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.4" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.1" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BackManager.Application\BackManager.Application.csproj" />
+    <ProjectReference Include="..\BackManager.Utility\BackManager.Utility.csproj" />
+    <ProjectReference Include="..\Microsoft.Extensions.Caching.Redis\Microsoft.Extensions.Caching.Redis.csproj" />
+  </ItemGroup>
+
+
+</Project>

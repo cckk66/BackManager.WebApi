@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BackManager.WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:BackManager.WebApi.Controllers.LoginController.Login(BackManager.Common.DtoModel.Model.Login.LoginUserDto)">
+            <summary>
+            登录
+            </summary>
+            <param Name="loginUserDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysGroupController.SysGroupPage(BackManager.Domain.DomainDrive.QueryParameter{BackManager.Common.DtoModel.Model.SysGroupParameter})">
+            <summary>
+            用户分组分页
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysGroupController.SysGroupUpdate(BackManager.Common.DtoModel.SysGroupDto)">
+            <summary>
+            修改分组
+            </summary>
+            <param name="SysGroup"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysGroupController.SysGroupAdd(BackManager.Common.DtoModel.SysGroupDto)">
+            <summary>
+            新增/修改分组
+            </summary>
+            <param name="SysGroup"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysGroupController.SysGroupDelete(System.Int64[])">
+            <summary>
+            删除分组
+            </summary>
+            <param name="Ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysGroupController.GetSysGroup(System.Int64)">
+            <summary>
+            获取分组信息
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BackManager.WebApi.Controllers.Sys.SysMenuController">
+            <summary>
+            系统菜单
+            </summary>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysMenuController.SysMenuPage(BackManager.Domain.DomainDrive.QueryParameter{BackManager.Common.DtoModel.Model.SysModel.QueryParameter.SysMenuParameter})">
+            <summary>
+            菜单分页
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysMenuController.saveMenuSort(System.Collections.Generic.Dictionary{System.Int32,System.Int32})">
+            <summary>
+            保存菜单排序
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysUserController.GetSysUser(System.Int64)">
+            <summary>
+            用户测试
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysUserController.SysUserAdd(BackManager.Common.DtoModel.SysUserDto)">
+            <summary>
+            用户新增
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysUserController.SysUserUpdate(BackManager.Common.DtoModel.SysUserDto)">
+            <summary>
+            用户修改
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysUserController.SysUserPage(BackManager.Domain.DomainDrive.QueryParameter{BackManager.Common.DtoModel.Model.SysModel.QueryParameter.SysUserPar})">
+            <summary>
+            用户分页
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysUserController.LogOut">
+            <summary>
+            用户测试
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.UserController.Logout">
+             <summary>
+            退出登录
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:BackManager.WebApi.Signal.SysHub">
+            <summary>
+            系统通讯类
+            </summary>
+        </member>
+        <member name="P:BackManager.WebApi.Signal.SysHub.SignalOnLineUsers">
+            <summary>
+            用户集合
+            </summary>
+        </member>
+        <member name="M:BackManager.WebApi.Signal.SysHub.SysMessage(System.Int64)">
+            <summary>
+            获取广播消息
+            </summary>
+            <param name="UserID">请求用户ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Signal.SysHub.SendClientByUser(System.Int64,System.Int64,BackManager.WebApi.Signal.Model.SignalSysUser)">
+            <summary>
+            指定客户端发送
+            </summary>
+            <param name="UserID"></param>
+            <param name="SendUserID"></param>
+            <param name="signalSysUser"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BackManager.WebApi.Signal.Model.SignalSysUser">
+            <summary>
+            系统通讯消息
+            </summary>
+        </member>
+        <member name="P:BackManager.WebApi.Signal.Model.SignalSysUser.UserID">
+            <summary>
+            用户id
+            </summary>
+        </member>
+    </members>
+</doc>

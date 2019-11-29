@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Common.DtoModel\BackManager.Common.DtoModel.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="EfModelValidatable\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BackManager.Domain\BackManager.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

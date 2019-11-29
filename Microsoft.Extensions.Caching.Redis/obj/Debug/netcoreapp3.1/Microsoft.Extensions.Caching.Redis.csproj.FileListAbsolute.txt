@@ -1,0 +1,8 @@
+D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\Microsoft.Extensions.Caching.Redis\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Redis.deps.json
+D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\Microsoft.Extensions.Caching.Redis\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Redis.dll
+D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\Microsoft.Extensions.Caching.Redis\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Redis.pdb
+D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\Microsoft.Extensions.Caching.Redis\obj\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Redis.csprojAssemblyReference.cache
+D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\Microsoft.Extensions.Caching.Redis\obj\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Redis.AssemblyInfoInputs.cache
+D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\Microsoft.Extensions.Caching.Redis\obj\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Redis.AssemblyInfo.cs
+D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\Microsoft.Extensions.Caching.Redis\obj\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Redis.dll
+D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\Microsoft.Extensions.Caching.Redis\obj\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Redis.pdb

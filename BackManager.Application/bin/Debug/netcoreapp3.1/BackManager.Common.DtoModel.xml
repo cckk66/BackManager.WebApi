@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BackManager.Common.DtoModel</name>
+    </assembly>
+    <members>
+        <member name="T:BackManager.Common.DtoModel.Model.Login.LoginUserDto">
+            <summary>
+            登录提交类
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.Model.Login.LoginUserDto.UserName">
+            <summary>
+            登录名称
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.Model.Login.LoginUserDto.Password">
+            <summary>
+            登录密码
+            </summary>
+        </member>
+        <member name="T:BackManager.Common.DtoModel.Model.SysGroupParameter">
+            <summary>
+            用户分组查询
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.Model.SysModel.QueryParameter.SysMessagePar.Title">
+            <summary>
+            消息标题
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.Model.SysModel.QueryParameter.SysMessagePar.Content">
+            <summary>
+            消息内容
+            </summary>
+        </member>
+        <member name="T:BackManager.Common.DtoModel.Model.SysModel.QueryParameter.SysUserPar">
+            <summary>
+            用户管理查询
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.Model.SysModel.SysMessageDto.Title">
+            <summary>
+            消息标题
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.Model.SysModel.SysMessageDto.Content">
+            <summary>
+            消息内容
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysGroupDto.GroupName">
+            <summary>
+            组名称
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysGroupDto.GroupType">
+            <summary>
+            组类型 备用
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysGroupDto.CreatedAt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysGroupDto.CreatedUserId">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysGroupDto.UpdatedAt">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysGroupDto.UpdatedUserId">
+            <summary>
+            更新人
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysGroupDto.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysMenuDto.Name">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysMenuDto.Icon">
+            <summary>
+            菜单图标
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysMenuDto.FatherID">
+            <summary>
+            父节点ID
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysMenuDto.Url">
+            <summary>
+            Url 地址
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysMenuDto.MenuCategory">
+            <summary>
+            分类
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysMenuDto.MenuState">
+            <summary>
+            状态 0:启用 1:禁用
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysMenuDto.Orderby">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysMenuDto.Path">
+            <summary>
+            vue路由path
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysMenuDto.Children">
+            <summary>
+            下级菜单集合
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysUserDto.DepartmentID">
+            <summary>
+            所属部门
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysUserDto.LoginName">
+            <summary>
+            登录名称
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysUserDto.NiceName">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysUserDto.ContractPhone">
+            <summary>
+            联系电话
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysUserDto.GroupName">
+            <summary>
+            组名称
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:BackManager.Common.DtoModel.SysUserDto.MenuList" -->
+    </members>
+</doc>

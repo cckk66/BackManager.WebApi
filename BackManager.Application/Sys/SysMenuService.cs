@@ -62,13 +62,36 @@ namespace BackManager.Application
                 List<SysMenuDto> dbSysMenuDtos = AutoMapperHelper.MapToList<SysMenu, SysMenuDto>(dbSysMenus).ToList();
                 sysMenuDtos = SetSysMenuDto(0, dbSysMenuDtos, sysMenuDtos);
             }
-
-            return ApiResult<PageResult<SysMenuDto>>.Ok(new PageResult<SysMenuDto>()
+            var result = ApiResult<PageResult<SysMenuDto>>.Ok(new PageResult<SysMenuDto>()
             {
                 Rows = sysMenuDtos,
                 Total = 0,
                 PageTotal = 1
             });
+
+            try
+            {
+                string st = Newtonsoft.Json.JsonConvert.SerializeObject(sysMenuDtos);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            try
+            {
+                string st = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+
+
+
+            return result;
 
         }
 
@@ -79,24 +102,25 @@ namespace BackManager.Application
 
             if (dbSysMenuDtos.Any(m => m.FatherID == FatherID))
             {
+                List<SysMenuDto> Children = null;
 
                 if (FatherID == 0)
                 {
-                    sysMenuDtos = dbSysMenuDtos.Where(m => m.FatherID == FatherID).ToList();
-                    sysMenuDtos.ForEach(m =>
+                    Children = dbSysMenuDtos.Where(m => m.FatherID == FatherID).ToList();
+                    Children.ForEach(m =>
                     {
                         m.Children = SetSysMenuDto(m.ID, dbSysMenuDtos, sysMenuDtos);
                     });
                 }
                 else
                 {
-                    var Children = dbSysMenuDtos.Where(m => m.FatherID == FatherID).ToList();
+                    Children = dbSysMenuDtos.Where(m => m.FatherID == FatherID).ToList();
                     Children.ForEach(m =>
                     {
                         m.Children = SetSysMenuDto(m.ID, dbSysMenuDtos, sysMenuDtos);
                     });
-                    return Children.OrderBy(m => m.Orderby).ToList();
                 }
+                return Children.OrderBy(m => m.Orderby).ToList();
             }
 
             return sysMenuDtos;

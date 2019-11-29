@@ -58,5 +58,17 @@ namespace BackManager.Common.DtoModel
                 yield return new ValidationResult(Newtonsoft.Json.JsonConvert.SerializeObject(ApiResult<string>.Error("分组名称不能为空")));
             }
         }
+
+
+        /// <summary>
+        /// 创建用户
+        /// </summary>
+        public string CreatedUserName { get; set; }
+
+
+        /// <summary>
+        /// 修改人
+        /// </summary>
+        public string UpdatedUserName { get; set; }
     }
 }

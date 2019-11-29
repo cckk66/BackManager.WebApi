@@ -237,7 +237,10 @@ namespace BackManager.Infrastructure
 
             IEnumerable<Parg> Rows = this.GetAlls<Parg>(pageSql, sqlResult.ParResultList);
             int Total = this.ExecuteScalar(sql, sqlResult.ParResultList);
-            int PageTotal = (Total % pageSize == 0) ? Total / pageSize : (Total / pageSize) + 1;
+
+            int PageTotal = Total > 0 ?
+                ((Total % pageSize == 0) ? Total / pageSize : (Total / pageSize) + 1)
+                : 1;
 
             return new PageResult<Parg>()
             {

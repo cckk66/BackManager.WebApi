@@ -59,14 +59,20 @@ namespace BackManager.Application
 
 
 
-            PageResult<SysMessageDto> pageResult = _sysMessageRepository.QueryPage<SysMessageDto, SysMessagePar>(@"SELECT
+            PageResult<SysMessageDto> pageResult = _sysMessageRepository.QueryPage<SysMessageDto, SysMessagePar>(@"
                                                                                        SELECT
+	                                                                                    sm.ID,
 	                                                                                    sm.Title,
 	                                                                                    sm.Content,
 	                                                                                    sm.PutStartDate,
-	                                                                                    sm.PutEndDate 
+	                                                                                    sm.PutEndDate,          
+                                                                                        sm.DeleteFlag,
+                                                                                        sy.LoginName CreatedUserName,
+                                                                                        su.LoginName   UpdatedUserName 
                                                                                     FROM
-	                                                                                    sysmessage sm",
+	                                                                                    sysmessage sm
+                                                                                        left join SysUser sy on sm.CreatedUserId=sy.ID
+                                                                                        left join SysUser su on sm.UpdatedUserId=su.ID",
                                                                                         lambdaWhere,
                                                                                         parameter.PageSize,
                                                                                         parameter.PageIndex,

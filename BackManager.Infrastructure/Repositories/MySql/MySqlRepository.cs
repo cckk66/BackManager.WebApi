@@ -200,11 +200,11 @@ namespace BackManager.Infrastructure
                 list = list.Where(funcWhere);
             }
             if (IsDesc)
-            { 
+            {
                 list = list.OrderByDescending(funcOrderby);
             }
             else
-            { 
+            {
                 list = list.OrderBy(funcOrderby);
             }
             int Total = list.Count();
@@ -213,7 +213,7 @@ namespace BackManager.Infrastructure
             PageResult<TEntity> result = new PageResult<TEntity>()
             {
                 Rows = list.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList(),
-                PageTotal= PageTotal,
+                PageTotal = PageTotal,
                 Total = list.Count()
             };
             return result;
@@ -227,7 +227,9 @@ namespace BackManager.Infrastructure
 
             IEnumerable<Parg> Rows = this.GetAlls<Parg>(pageSql, sqlResult.ParResultList);
             int Total = this.ExecuteScalar(sql, sqlResult.ParResultList);
-            int PageTotal = (Total % pageSize == 0) ? Total / pageSize : (Total / pageSize) + 1;
+            int PageTotal = Total > 0 ?
+                ((Total % pageSize == 0) ? Total / pageSize : (Total / pageSize) + 1)
+                : 1;
 
             return new PageResult<Parg>()
             {
@@ -238,7 +240,7 @@ namespace BackManager.Infrastructure
         }
         public PageResult<Parg> QueryPage<Parg>(string sql, int pageSize, int pageIndex, string Orderby, bool IsDesc = true)
         {
-         
+
             string pageSql = ToSql(sql, pageSize, pageIndex, Orderby, IsDesc);
             IEnumerable<Parg> Rows = this.GetAlls<Parg>(pageSql);
             return ToPageRusult(sql, pageSize, Rows);
@@ -283,11 +285,11 @@ namespace BackManager.Infrastructure
                               getOrderBy()
                              } 
                                 limit {pageSize}; ";
-      
+
             return pageSql;
         }
         #region 批量操作
-       
+
         public abstract Task<int> BulkInsert(List<TEntity> entities);
 
 
@@ -296,7 +298,7 @@ namespace BackManager.Infrastructure
             Expression<Func<TEntity, dynamic>> JoinProperty);
 
 
-             #endregion
+        #endregion
 
     }
 }

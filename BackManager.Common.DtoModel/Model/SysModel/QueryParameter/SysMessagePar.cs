@@ -14,8 +14,8 @@ namespace BackManager.Common.DtoModel.Model.SysModel.QueryParameter
         /// </summary>
         public string Content { get; set; }
 
-        public DateTime? PutStartDate { get; set; } = DateTime.MinValue;
-        public DateTime? PutEndDate { get; set; } = DateTime.MinValue;
+        public DateTime? PutStartDate { get; set; }
+        public DateTime? PutEndDate { get; set; }
         public int DeleteFlag { get; set; }
     }
 }

@@ -49,6 +49,16 @@
             消息内容
             </summary>
         </member>
+        <member name="P:BackManager.Common.DtoModel.Model.SysModel.SysMessageDto.CreatedUserName">
+            <summary>
+            创建用户
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.Model.SysModel.SysMessageDto.UpdatedUserName">
+            <summary>
+            修改人
+            </summary>
+        </member>
         <member name="T:BackManager.Common.DtoModel.Model.SysGroupParameter">
             <summary>
             用户分组查询
@@ -87,6 +97,16 @@
         <member name="P:BackManager.Common.DtoModel.SysGroupDto.Remark">
             <summary>
             
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysGroupDto.CreatedUserName">
+            <summary>
+            创建用户
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.SysGroupDto.UpdatedUserName">
+            <summary>
+            修改人
             </summary>
         </member>
         <member name="P:BackManager.Common.DtoModel.SysMenuDto.Name">

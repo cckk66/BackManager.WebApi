@@ -5,3 +5,10 @@
 /.vs/BackManager.WebApi/v16/Server/sqlite3/db.lock
 /.vs/BackManager.WebApi/v16
 /.vs/BackManager.WebApi/config/applicationhost.config
+/BackManager.Application/obj
+/BackManager.Common.DtoModel/obj
+/BackManager.Domain/obj
+/BackManager.Infrastructure/obj
+/BackManager.Utility/obj
+/BackManager.WebApi/obj
+/Microsoft.Extensions.Caching.Redis/obj

@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿
+
+using Newtonsoft.Json;
 
 namespace BackManager.Domain
 {

@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.IO;
 using System.Linq;
@@ -101,17 +102,15 @@ namespace BackManager.WebApi
 
             }).AddControllersAsServices().AddNewtonsoftJson(options =>
             {
-
-                //JSON首字母小写解决
-                options.SerializerSettings.ContractResolver =
-                    new Newtonsoft.Json.Serialization.DefaultContractResolver();
-
-                //忽略循环引用
+                // 忽略循环引用
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-
+                // 不使用驼峰
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                // 设置时间格式
                 options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+                // 如字段为null值，该字段不会返回到前端
+                // options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
-
             #region swagger
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(options =>
@@ -124,6 +123,7 @@ namespace BackManager.WebApi
                 //Set the comments path for the swagger json and ui.  
                 options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "BackManager.Common.DtoModel.xml"));
                 options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "BackManager.WebApi.xml"));
+
 
 
             });
@@ -150,9 +150,9 @@ namespace BackManager.WebApi
                 }
             });
             services.AddSignalR();
-            //services.AddDbContext<UnitOfWorkDbContext>(options =>
-            //   options.UseMySql("Data Source=localhost;port=3306;Initial Catalog=magicadmin;uid=root;password=123456;")
-            //   );
+      
+
+
         }
         //注册AOP
         public void ConfigureContainer(ContainerBuilder containerBuilder)

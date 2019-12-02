@@ -69,24 +69,24 @@ namespace BackManager.Application
                 PageTotal = 1
             });
 
-            try
-            {
-                string st = Newtonsoft.Json.JsonConvert.SerializeObject(sysMenuDtos);
-            }
-            catch (Exception ex)
-            {
+            //try
+            //{
+            //    string st = Newtonsoft.Json.JsonConvert.SerializeObject(sysMenuDtos);
+            //}
+            //catch (Exception ex)
+            //{
 
-                throw ex;
-            }
-            try
-            {
-                string st = Newtonsoft.Json.JsonConvert.SerializeObject(result);
-            }
-            catch (Exception ex)
-            {
+            //    throw ex;
+            //}
+            //try
+            //{
+            //    string st = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+            //}
+            //catch (Exception ex)
+            //{
 
-                throw ex;
-            }
+            //    throw ex;
+            //}
 
 
 

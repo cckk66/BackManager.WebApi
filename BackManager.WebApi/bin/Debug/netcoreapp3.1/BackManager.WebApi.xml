@@ -67,6 +67,12 @@
             系统消息
             </summary>
         </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysMessageController.GetNewSysMessageCount">
+            <summary>
+            用户系统消息分页
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:BackManager.WebApi.Controllers.Sys.SysMessageController.SysMessagePage(BackManager.Domain.DomainDrive.QueryParameter{BackManager.Common.DtoModel.Model.SysModel.QueryParameter.SysMessagePar})">
             <summary>
             用户系统消息分页

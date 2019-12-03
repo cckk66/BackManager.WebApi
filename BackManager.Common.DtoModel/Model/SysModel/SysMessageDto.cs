@@ -4,6 +4,7 @@ namespace BackManager.Common.DtoModel.Model.SysModel
 {
     public class SysMessageDto
     {
+        public long ID { get; set; }
         /// <summary>
         /// 消息标题
         /// </summary>

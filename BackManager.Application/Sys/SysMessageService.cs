@@ -34,6 +34,15 @@ namespace BackManager.Application
             });
 
         }
+        /// <summary>
+        /// 系统最新消息
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ApiResult<int>> GetNewSysMessageCount()
+        {
+            DateTime dateTime = DateTime.Now;
+            return ApiResult<int>.Ok(await _sysMessageRepository.CountAsync(m => m.PutStartDate >= dateTime && m.PutEndDate <= dateTime));
+        }
 
         public Task<ApiResult<PageResult<SysMessageDto>>> GridInfoAsync<Par>(Domain.DomainDrive.QueryParameter<Par> parameter) where Par : class
         {

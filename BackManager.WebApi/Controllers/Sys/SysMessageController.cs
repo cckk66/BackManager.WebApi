@@ -18,6 +18,16 @@ namespace BackManager.WebApi.Controllers.Sys
         {
             _sysMessageService = sysMessageService;
         }
+        /// <summary>
+        /// 用户系统消息分页
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+
+        public async Task<IActionResult> GetNewSysMessageCount()
+        {
+            return Ok(await _sysMessageService.GetNewSysMessageCount());
+        }
 
         /// <summary>
         /// 用户系统消息分页

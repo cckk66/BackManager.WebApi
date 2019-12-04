@@ -1,9 +1,9 @@
 ﻿using Autofac;
 using BackManager.Application;
+using BackManager.Application.Sys.MessageObservers.Observers;
 using BackManager.Domain;
 using BackManager.Infrastructure;
 using BackManager.Utility;
-using BackManager.WebApi.Signal;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using UnitOfWork;
@@ -42,7 +42,8 @@ namespace BackManager.WebApi.Utility
               .InstancePerLifetimeScope();
 
             builder.RegisterType<SysHub>();
-
+            builder.RegisterType<SysHubObservers>();
+            
             //属性注入
             {
                 var controllerBaseType = typeof(ControllerBase);

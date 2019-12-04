@@ -143,42 +143,6 @@
              </summary>
              <returns></returns>
         </member>
-        <member name="T:BackManager.WebApi.Signal.SysHub">
-            <summary>
-            系统通讯类
-            </summary>
-        </member>
-        <member name="P:BackManager.WebApi.Signal.SysHub.SignalOnLineUsers">
-            <summary>
-            用户集合
-            </summary>
-        </member>
-        <member name="M:BackManager.WebApi.Signal.SysHub.SysMessage(System.Int64)">
-            <summary>
-            获取广播消息
-            </summary>
-            <param name="UserID">请求用户ID</param>
-            <returns></returns>
-        </member>
-        <member name="M:BackManager.WebApi.Signal.SysHub.SendClientByUser(System.Int64,System.Int64,BackManager.WebApi.Signal.Model.SignalSysUser)">
-            <summary>
-            指定客户端发送
-            </summary>
-            <param name="UserID"></param>
-            <param name="SendUserID"></param>
-            <param name="signalSysUser"></param>
-            <returns></returns>
-        </member>
-        <member name="T:BackManager.WebApi.Signal.Model.SignalSysUser">
-            <summary>
-            系统通讯消息
-            </summary>
-        </member>
-        <member name="P:BackManager.WebApi.Signal.Model.SignalSysUser.UserID">
-            <summary>
-            用户id
-            </summary>
-        </member>
         <member name="T:BackManager.Utility.Middleware.ErrorMiddleware.MyErrorMiddleware">
             <summary>
             错误管道中间件

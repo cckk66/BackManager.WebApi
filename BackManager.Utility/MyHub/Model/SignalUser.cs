@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Security.Claims;
+using System.Security.Principal;
 using System.Text;
 
 namespace BackManager.Utility
@@ -9,7 +10,7 @@ namespace BackManager.Utility
     {
         public string ConnectionId { get; set; }
         public DateTime LoginDate { get; set; } = new DateTime();
-        public ClaimsPrincipal User { get; set; }
+        //public IIdentity Identity  { get; set; }
         /// <summary>
         /// 终止时错错误信息
         /// </summary>

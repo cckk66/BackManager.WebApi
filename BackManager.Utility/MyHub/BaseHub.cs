@@ -10,10 +10,15 @@ namespace BackManager.Utility
          where T : SignalUser, new()
     {
         /// <summary>
-        /// 用户集合
+        /// 获取用户集合
         /// </summary>
         /// <returns></returns>
-        protected abstract List<T> SignalOnLineUsers { get; set; }
+        protected abstract List<T> GetSignalOnLineUsers();
+        /// <summary>
+        /// 设置获取用户集合
+        /// </summary>
+        /// <returns></returns>
+        protected abstract void SetSignalOnLineUsers(List<T> ts);
         /// <summary>
         /// 建立新连接时之前终止之前委托,用于用户自定义扩展 ,传入登录用户Model, 返回登录用户Model
         /// </summary>
@@ -32,14 +37,16 @@ namespace BackManager.Utility
                     T signalUser = new T
                     {
                         ConnectionId = hubCallerContext.ConnectionId,
-                        User = hubCallerContext.User
+                        //Identity = hubCallerContext.User.Identity
                     };
-
+                    List<T> newSignalOnLineUsers = AutoMapperHelper.MapToList<T, T>(this.GetSignalOnLineUsers()).ToList();
                     if (MyConnectedBefore != null)
                     {
                         signalUser = MyConnectedBefore(hubCallerContext, signalUser);
                     }
-                    SignalOnLineUsers.Add(signalUser);
+
+                    newSignalOnLineUsers.Add(signalUser);
+                    this.SetSignalOnLineUsers(newSignalOnLineUsers);
                 }
             });
         }
@@ -48,6 +55,8 @@ namespace BackManager.Utility
         public override Task OnConnectedAsync()
         {
             this.OnMyConnectedAsync(Context);
+         
+
             return base.OnConnectedAsync();
         }
         /// <summary>
@@ -68,7 +77,9 @@ namespace BackManager.Utility
                 {
                     DisconnectedBefore(hubCallerContext);
                 }
-                SignalOnLineUsers = SignalOnLineUsers.Where(m => m.ConnectionId != hubCallerContext.ConnectionId).ToList();
+                List<T> newSignalOnLineUsers = AutoMapperHelper.MapToList<T, T>(this.GetSignalOnLineUsers()).ToList();
+                newSignalOnLineUsers = newSignalOnLineUsers.Where(m => m.ConnectionId != hubCallerContext.ConnectionId).ToList();
+                this.SetSignalOnLineUsers(newSignalOnLineUsers);
             });
         }
         /// <summary>
@@ -88,9 +99,10 @@ namespace BackManager.Utility
         /// <returns></returns>
         protected T FindSignalUser(Func<T, bool> predicate)
         {
-            if (this.SignalOnLineUsers != null)
+            List<T> newSignalOnLineUsers = this.GetSignalOnLineUsers();
+            if (newSignalOnLineUsers != null)
             {
-                return this.SignalOnLineUsers.Where(predicate).FirstOrDefault();
+                return newSignalOnLineUsers.Where(predicate).FirstOrDefault();
 
             }
             return null;

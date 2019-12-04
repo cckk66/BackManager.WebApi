@@ -1,9 +1,12 @@
-﻿using BackManager.Common.DtoModel.Model.SysModel;
+﻿using BackManager.Application.Sys.MessageObservers;
+using BackManager.Application.Sys.MessageObservers.Observers;
+using BackManager.Common.DtoModel.Model.SysModel;
 using BackManager.Common.DtoModel.Model.SysModel.QueryParameter;
 using BackManager.Domain;
 using BackManager.Domain.Model.Sys;
 using BackManager.Utility;
 using BackManager.Utility.Extension.ExpressionToSql;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -14,10 +17,12 @@ namespace BackManager.Application
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<SysMessage> _sysMessageRepository;
-        public SysMessageService(IUnitOfWork unitOfWork, IRepository<SysMessage> sysMessageRepository)
+        private readonly SysHubObservers _SysHubObservers;
+        public SysMessageService(IUnitOfWork unitOfWork, IRepository<SysMessage> sysMessageRepository, SysHubObservers SysHubObservers)
         {
             _sysMessageRepository = sysMessageRepository;
             _unitOfWork = unitOfWork;
+            _SysHubObservers = SysHubObservers;
         }
 
         public Task<ApiResult<long>> DeleteAsync(long[] ids)
@@ -40,8 +45,9 @@ namespace BackManager.Application
         /// <returns></returns>
         public async Task<ApiResult<int>> GetNewSysMessageCount()
         {
-            DateTime dateTime = DateTime.Now;
-            return ApiResult<int>.Ok(await _sysMessageRepository.CountAsync(m => m.PutStartDate >= dateTime && m.PutEndDate <= dateTime));
+            DateTime SDateTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd 00:00:00"));
+            DateTime EDateTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd 23:59:59"));
+            return ApiResult<int>.Ok(await _sysMessageRepository.CountAsync(m => m.PutStartDate >= SDateTime && m.PutEndDate <= EDateTime));
         }
 
         public Task<ApiResult<PageResult<SysMessageDto>>> GridInfoAsync<Par>(Domain.DomainDrive.QueryParameter<Par> parameter) where Par : class
@@ -49,18 +55,20 @@ namespace BackManager.Application
             Expression<Func<SysMessagePar, bool>> lambdaWhere = m => m.DeleteFlag == 0;
 
             SysMessagePar sysMessagePar = parameter.FilterTo<SysMessagePar>();
-            DateTime dateTime = DateTime.Now;
+            DateTime SDateTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd 00:00:00"));
+            DateTime EDateTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd 23:59:59"));
+
             lambdaWhere = lambdaWhere
                                    .WhereIFAnd(!string.IsNullOrEmpty(sysMessagePar.Title), m => m.Title.Contains(sysMessagePar.Title))
                                    .WhereIFAnd(!string.IsNullOrEmpty(sysMessagePar.Content), m => m.Content.Contains(sysMessagePar.Content))
                                     .WhereIFAnd
                                     (
                                         sysMessagePar.PutStartDate != null && sysMessagePar.PutStartDate != DateTime.MinValue,
-                                        m => m.PutStartDate >= dateTime
+                                        m => m.PutStartDate >= SDateTime
                                     )
                                     .WhereIFAnd(
                                         sysMessagePar.PutEndDate != null && sysMessagePar.PutEndDate != DateTime.MinValue,
-                                        m => m.PutEndDate <= dateTime
+                                        m => m.PutEndDate <= EDateTime
                                     );
 
 
@@ -95,6 +103,12 @@ namespace BackManager.Application
             SysMessage sysMessage = AutoMapperHelper.MapTo<SysMessage>(model);
             sysMessage = await _sysMessageRepository.InsertAsync(sysMessage);
             _unitOfWork.SaveChanges();
+            if (sysMessage.ID > 0)
+            {
+                SendObservers sendObservers = new SendObservers();
+                sendObservers.AddObserver(_SysHubObservers);
+                sendObservers.SendAfter(model);
+            }
             return await Task.FromResult(ApiResult<long>.Ok(sysMessage.ID));
         }
 

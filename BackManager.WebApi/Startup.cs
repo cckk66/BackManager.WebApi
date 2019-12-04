@@ -1,15 +1,17 @@
 using Autofac;
+using BackManager.Application;
 using BackManager.Domain;
 using BackManager.Utility;
+using BackManager.Utility.Common;
 using BackManager.Utility.Filter;
 using BackManager.Utility.Middleware;
 using BackManager.Utility.Middleware.ErrorMiddleware;
 using BackManager.Utility.Tool.Swagger;
-using BackManager.WebApi.Signal;
 using BackManager.WebApi.Utility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Redis;
 //using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +24,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 using UnitOfWork;
 
 namespace BackManager.WebApi
@@ -35,6 +38,7 @@ namespace BackManager.WebApi
 
 
             StaticConstraint.Init(s => configuration[s]);
+
 
         }
 
@@ -53,11 +57,15 @@ namespace BackManager.WebApi
                 c.AddPolicy("LimitRequests", policy =>
                 {
                     // 支持多个域名端口，注意端口号后不要带/斜杆：比如localhost:8000/，是错的
-                    // 注意，http://127.0.0.1:1818 和 http://localhost:1818 是不一样的，尽量写两个
-                    policy
-                    .WithOrigins("http://localhost:8080")
-                    .AllowAnyHeader()//Ensures that the policy allows any header.
-                    .AllowAnyMethod();
+                    //// 注意，http://127.0.0.1:1818 和 http://localhost:1818 是不一样的，尽量写两个
+                    //policy
+                    //.WithOrigins("http://localhost:8080")
+                    //.AllowAnyHeader()//Ensures that the policy allows any header.
+                    //.AllowAnyMethod();
+                    policy.SetIsOriginAllowed(origin => true)
+                          .AllowAnyHeader()
+                          .AllowAnyMethod()
+                          .AllowCredentials();
                 });
             });
 
@@ -71,6 +79,9 @@ namespace BackManager.WebApi
                     options.Host = Dns.GetHostAddressesAsync(options.Host)
                     .Result.FirstOrDefault(a => a.AddressFamily == AddressFamily.InterNetwork).ToString();
                 }
+
+
+
             });
             #endregion
 
@@ -150,7 +161,7 @@ namespace BackManager.WebApi
                 }
             });
             services.AddSignalR();
-      
+
 
 
         }
@@ -161,7 +172,7 @@ namespace BackManager.WebApi
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         //dotnet publish -c Release -f netcoreapp2.2 -o  ./test 发布 -c 模式 -f 模板框架 -o 指定文件夹
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime lifetime, IHost host)
         {
             if (env.IsDevelopment())
             {
@@ -198,6 +209,21 @@ namespace BackManager.WebApi
                 endpoints.MapHub<SysHub>("/chathub");
                 endpoints.MapControllers();
             });
+            //程序启动删除之前旧的Signal在线用户
+            lifetime.ApplicationStarted.Register(() =>
+            {
+                using (var container = host.Services.CreateScope())
+                {
+                    IServiceStackRedisCache serviceStackRedisCache = container.ServiceProvider.GetService<IServiceStackRedisCache>();
+                    serviceStackRedisCache.KeyDelete(RedisCacheKey.SysHubOnlineUserKey);
+                }
+            });//应用停止后从服务中心注销
+
+            lifetime.ApplicationStopped.Register(() =>
+            {
+                Console.WriteLine("ApplicationStopped");
+            });
+
         }
     }
 

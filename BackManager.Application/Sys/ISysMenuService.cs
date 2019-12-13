@@ -11,5 +11,8 @@ namespace BackManager.Application
     {
         Task<RouterDto> GetUserMenuList(long iD);
         Task<ApiResult<long>> saveMenuSort(Dictionary<int, int> dicSort);
+
+        Task<List<SysMenuDto>> GetSysMenus();
     }
+
 }

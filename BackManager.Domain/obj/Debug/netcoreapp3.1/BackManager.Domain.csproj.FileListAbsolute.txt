@@ -5,3 +5,4 @@ D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebAp
 D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Domain\obj\Debug\netcoreapp3.1\BackManager.Domain.AssemblyInfo.cs
 D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Domain\obj\Debug\netcoreapp3.1\BackManager.Domain.dll
 D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Domain\obj\Debug\netcoreapp3.1\BackManager.Domain.pdb
+D:\公司\个人项目\vueTypescript\vue3.0管理项目\接口\BackManager.WebApi\BackManager.WebApi\BackManager.Domain\obj\Debug\netcoreapp3.1\BackManager.Domain.csprojAssemblyReference.cache

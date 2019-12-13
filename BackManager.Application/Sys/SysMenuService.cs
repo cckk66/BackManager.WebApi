@@ -125,6 +125,11 @@ namespace BackManager.Application
 
             return sysMenuDtos;
         }
+        public async Task<List<SysMenuDto>> GetSysMenus()
+        {
+            var dbSysMenus= await _sysMenuRepository.GetAllListAsync(m => m.DeleteFlag == Convert.ToInt32(EDeleteFlag.正常));
+            return AutoMapperHelper.MapToList<SysMenu, SysMenuDto>(dbSysMenus).ToList();
+        }
 
         /// <summary>
         /// 菜单信息

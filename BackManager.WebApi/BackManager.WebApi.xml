@@ -45,6 +45,13 @@
             <param name="Id"></param>
             <returns></returns>
         </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysGroupController.GetGroupMenuDto(System.Int64)">
+            <summary>
+            获取分组授权信息
+            </summary>
+            <param name="GroupID"></param>
+            <returns></returns>
+        </member>
         <member name="T:BackManager.WebApi.Controllers.Sys.SysMenuController">
             <summary>
             系统菜单

@@ -19,7 +19,14 @@ namespace BackManager.Application.Sys.MessageObservers.Observers
 
         public async Task<SysMessageDto> SendAfter(SysMessageDto SysMessage)
         {
-            await _sysHub.Clients.SysMessage(SysMessage);
+            //await _sysHub.Clients.SysMessage(SysMessage);
+            int Count = System.Convert.ToInt32(SysMessage.Content);
+            for (int i = 0; i < Count; i++)
+            {
+                await _sysHub.Clients.Client(SysMessage.Title).SendAsync("testOpen", Count, (Count - (i+1)));
+                //Thread.Sleep(500);
+                await Task.Delay(500);
+            }
             return SysMessage;
         }
     }

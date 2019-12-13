@@ -64,6 +64,42 @@
             用户分组查询
             </summary>
         </member>
+        <!-- Badly formed XML comment ignored for member "P:BackManager.Common.DtoModel.Model.SysOpActionDto.ActionName" -->
+        <member name="P:BackManager.Common.DtoModel.Model.SysOpActionDto.ActionIcon">
+            <summary>
+            按钮图标
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.Model.SysOpActionDto.ActionButtonID">
+            <summary>
+            按钮的页面ID
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.GroupMenuDto.Name">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.GroupMenuDto.Icon">
+            <summary>
+            菜单图标
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.GroupMenuDto.FatherID">
+            <summary>
+            父节点ID
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.GroupMenuDto.Orderby">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:BackManager.Common.DtoModel.GroupMenuDto.Children">
+            <summary>
+            下级菜单集合
+            </summary>
+        </member>
         <member name="P:BackManager.Common.DtoModel.SysGroupDto.GroupName">
             <summary>
             组名称

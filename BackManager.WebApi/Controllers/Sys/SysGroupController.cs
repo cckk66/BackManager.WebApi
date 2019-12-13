@@ -78,6 +78,16 @@ namespace BackManager.WebApi.Controllers.Sys
         {
             return Ok(await _sysGroupService.GetModelAsync(Id));
         }
-
+        /// <summary>
+        /// 获取分组授权信息
+        /// </summary>
+        /// <param name="GroupID"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetGroupMenuDto(long GroupID)
+        {
+            return Ok(await _sysGroupService.GetGroupMenuDto(GroupID));
+        }
+        
     }
 }

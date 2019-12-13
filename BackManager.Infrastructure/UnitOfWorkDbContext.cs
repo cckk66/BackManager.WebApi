@@ -27,6 +27,9 @@ namespace UnitOfWork
         public DbSet<SysMenu> SysMenus { get; set; }
         public DbSet<ExceptionLog> ExceptionLogs { get; set; }
         public DbSet<SysMessage> SysMessages { get; set; }
+        public DbSet<SysOpAction> SysOpActions { get; set; }
+        public DbSet<SysMenuGroup> SysMenuGroups { get; set; }
+        public DbSet<SysMenuGroupAction> SysMenuGroupActions { get; set; }
         public DbSet<DTTest> DTTests { get; set; }
      
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -45,6 +48,9 @@ namespace UnitOfWork
             modelBuilder.Entity<SysMenu>().ToTable("SysMenu");
             modelBuilder.Entity<ExceptionLog>().ToTable("ExceptionLog");
             modelBuilder.Entity <SysMessage>().ToTable("SysMessage");
+            modelBuilder.Entity<SysOpAction>().ToTable("SysOpAction");
+            modelBuilder.Entity<SysMenuGroup>().ToTable("SysMenuGroup");
+            modelBuilder.Entity<SysMenuGroupAction>().ToTable("SysMenuGroupAction");
             modelBuilder.Entity<DTTest>().ToTable("DTTest");
 
 

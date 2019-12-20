@@ -4,6 +4,7 @@ using BackManager.Domain.Model.Sys;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using BackManager.Common.DtoModel.Model.SysModel;
 
 namespace BackManager.Application
 {
@@ -20,11 +21,19 @@ namespace BackManager.Application
 
 
 
-        public Task<List<SysMenuGroupAction>> GetSysMenuGroupActionByMenuGroupIDs(List<long> MenuGroupIDs)
+        public Task<List<SysMenuGroupActionDto>> GetSysMenuGroupActionByMenuGroupIDs(List<SysMenuGroup> MenuGroupIDs)
         {
             return Task.Run(() =>
              {
-                 return _sysMenuGroupActionRepository.GetAllList().Join(MenuGroupIDs, r => r.MenuGroupID, l => l, (r, l) => r).ToList();
+
+                 return _sysMenuGroupActionRepository.GetAllList()
+                 .Join<SysMenuGroupAction, SysMenuGroup, long, SysMenuGroupActionDto>(MenuGroupIDs, r => r.MenuGroupID, l => l.ID, (r, l) => new SysMenuGroupActionDto
+                 {
+                     ActionID = r.ActionID,
+                     MenuID = l.MenuID,
+                     MenuGroupActionID = r.ID
+                 }).ToList();
+
              });
         }
 

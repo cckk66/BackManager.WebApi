@@ -7,5 +7,8 @@ namespace BackManager.Application
     public interface ISysMenuGroupActionService
     {
         Task<List<SysMenuGroupAction>> GetSysMenuGroupActionByMenuGroupIDs(List<long> MenuGroupIDs);
+ 
+
+        Task<bool> Inserts(List<SysMenuGroupAction> newSysMenuGroupActions);
     }
 }

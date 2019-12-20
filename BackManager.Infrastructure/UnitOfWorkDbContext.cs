@@ -31,7 +31,7 @@ namespace UnitOfWork
         public DbSet<SysMenuGroup> SysMenuGroups { get; set; }
         public DbSet<SysMenuGroupAction> SysMenuGroupActions { get; set; }
         public DbSet<DTTest> DTTests { get; set; }
-     
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<SysGroup>()
@@ -47,9 +47,16 @@ namespace UnitOfWork
             modelBuilder.Entity<SysUserGroup>().ToTable("SysUserGroup");
             modelBuilder.Entity<SysMenu>().ToTable("SysMenu");
             modelBuilder.Entity<ExceptionLog>().ToTable("ExceptionLog");
-            modelBuilder.Entity <SysMessage>().ToTable("SysMessage");
+            modelBuilder.Entity<SysMessage>().ToTable("SysMessage");
             modelBuilder.Entity<SysOpAction>().ToTable("SysOpAction");
-            modelBuilder.Entity<SysMenuGroup>().ToTable("SysMenuGroup");
+
+            ///不一定需要提供导航属性。 您可以直接在关系的一端提供外键
+            modelBuilder.Entity<SysMenuGroup>()
+                .ToTable("SysMenuGroup");
+                //.HasOne<SysMenuGroupAction>()
+                //.WithMany()
+                //.HasForeignKey(p => p.ID);
+
             modelBuilder.Entity<SysMenuGroupAction>().ToTable("SysMenuGroupAction");
             modelBuilder.Entity<DTTest>().ToTable("DTTest");
 

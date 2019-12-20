@@ -100,6 +100,11 @@
             下级菜单集合
             </summary>
         </member>
+        <member name="P:BackManager.Common.DtoModel.GroupMenuDto.NodeKey">
+            <summary>
+            节点唯一键
+            </summary>
+        </member>
         <member name="P:BackManager.Common.DtoModel.SysGroupDto.GroupName">
             <summary>
             组名称

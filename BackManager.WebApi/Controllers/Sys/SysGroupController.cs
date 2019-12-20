@@ -5,6 +5,7 @@ using BackManager.Domain.DomainDrive;
 using BackManager.Utility.Filter;
 using BackManager.Utility.Filter.FormRepeatSubmitIntercept;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace BackManager.WebApi.Controllers.Sys
@@ -88,6 +89,17 @@ namespace BackManager.WebApi.Controllers.Sys
         {
             return Ok(await _sysGroupService.GetGroupMenuDto(GroupID));
         }
-        
+
+        /// <summary>
+        /// 保存授权
+        /// </summary>
+        /// <param name="GroupMenuDtos"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> SaveGroupMenuPower([FromBody]GroupMenuPowerDto GroupMenuDtos)
+        {
+            return Ok(await _sysGroupService.SaveGroupMenuPower(GroupMenuDtos.GroupID, GroupMenuDtos.GroupMenuDtos));
+        }
+
     }
 }

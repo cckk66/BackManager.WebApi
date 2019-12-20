@@ -104,22 +104,22 @@ namespace BackManager.Application
             {
                 List<SysMenuDto> Children = null;
 
-                if (FatherID == 0)
+                //if (FatherID == 0)
+                //{
+                //    Children = dbSysMenuDtos.Where(m => m.FatherID == FatherID).ToList();
+                //    Children.ForEach(m =>
+                //    {
+                //        m.Children = SetSysMenuDto(m.ID, dbSysMenuDtos, sysMenuDtos);
+                //    });
+                //}
+                //else
+                //{
+                Children = dbSysMenuDtos.Where(m => m.FatherID == FatherID).ToList();
+                Children.ForEach(m =>
                 {
-                    Children = dbSysMenuDtos.Where(m => m.FatherID == FatherID).ToList();
-                    Children.ForEach(m =>
-                    {
-                        m.Children = SetSysMenuDto(m.ID, dbSysMenuDtos, sysMenuDtos);
-                    });
-                }
-                else
-                {
-                    Children = dbSysMenuDtos.Where(m => m.FatherID == FatherID).ToList();
-                    Children.ForEach(m =>
-                    {
-                        m.Children = SetSysMenuDto(m.ID, dbSysMenuDtos, sysMenuDtos);
-                    });
-                }
+                    m.Children = SetSysMenuDto(m.ID, dbSysMenuDtos, sysMenuDtos);
+                });
+                // }
                 return Children.OrderBy(m => m.Orderby).ToList();
             }
 
@@ -127,7 +127,7 @@ namespace BackManager.Application
         }
         public async Task<List<SysMenuDto>> GetSysMenus()
         {
-            var dbSysMenus= await _sysMenuRepository.GetAllListAsync(m => m.DeleteFlag == Convert.ToInt32(EDeleteFlag.正常));
+            var dbSysMenus = await _sysMenuRepository.GetAllListAsync(m => m.DeleteFlag == Convert.ToInt32(EDeleteFlag.正常));
             return AutoMapperHelper.MapToList<SysMenu, SysMenuDto>(dbSysMenus).ToList();
         }
 

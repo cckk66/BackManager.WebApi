@@ -24,6 +24,20 @@ namespace BackManager.Application
             _unitOfWork = unitOfWork;
         }
 
+        public async Task<bool> ClearByGroupID(long groupID)
+        {
+            await _sysMenuGroupRepository.DeleteAsync(m => m.GroupID == groupID);
+            return true;
+        }
+        public Task<List<SysMenuGroup>> Inserts(List<SysMenuGroup> SysMenuGroups)
+        {
+            SysMenuGroups.ForEach(async m =>
+            {
+                var ss = await _sysMenuGroupRepository.InsertAsync(m);
+            });
+            return Task.FromResult(SysMenuGroups);
+
+        }
         public Task<List<SysMenuGroup>> GetSysMenuGroupsByGroupID(long GroupID)
         {
             return _sysMenuGroupRepository.GetAllListAsync(m => m.GroupID == GroupID);

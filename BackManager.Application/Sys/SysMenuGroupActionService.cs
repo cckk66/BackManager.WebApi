@@ -24,8 +24,14 @@ namespace BackManager.Application
         {
             return Task.Run(() =>
              {
-                 return _sysMenuGroupActionRepository.GetAllList().Join(MenuGroupIDs, r => r.ID, l => l, (r, l) => r).ToList();
+                 return _sysMenuGroupActionRepository.GetAllList().Join(MenuGroupIDs, r => r.MenuGroupID, l => l, (r, l) => r).ToList();
              });
+        }
+
+        public async Task<bool> Inserts(List<SysMenuGroupAction> newSysMenuGroupActions)
+        {
+            return await _sysMenuGroupActionRepository.BulkInsert(newSysMenuGroupActions) > 0;
+
         }
     }
 }

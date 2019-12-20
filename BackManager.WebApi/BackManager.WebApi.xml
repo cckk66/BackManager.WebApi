@@ -52,6 +52,13 @@
             <param name="GroupID"></param>
             <returns></returns>
         </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysGroupController.SaveGroupMenuPower(BackManager.Common.DtoModel.GroupMenuPowerDto)">
+            <summary>
+            保存授权
+            </summary>
+            <param name="GroupMenuDtos"></param>
+            <returns></returns>
+        </member>
         <member name="T:BackManager.WebApi.Controllers.Sys.SysMenuController">
             <summary>
             系统菜单

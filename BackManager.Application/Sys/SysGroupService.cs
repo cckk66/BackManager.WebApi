@@ -21,8 +21,10 @@ namespace BackManager.Application
         private readonly ISysMenuGroupService _sysMenuGroupService;
         private readonly ISysMenuGroupActionService _sysMenuGroupActionService;
         private readonly ISysOpActionService _sysOpActionService;
-        
-        public SysGroupService(IUnitOfWork unitOfWork, IRepository<SysGroup> sysGroupRepository, ISysMenuService sysMenuService,
+
+        public SysGroupService(
+            IUnitOfWork unitOfWork
+            , IRepository<SysGroup> sysGroupRepository, ISysMenuService sysMenuService,
             ISysMenuGroupService sysMenuGroupService,
             ISysMenuGroupActionService sysMenuGroupActionService,
             ISysOpActionService sysOpActionService
@@ -95,8 +97,9 @@ namespace BackManager.Application
             _unitOfWork.SaveChanges();
             return ApiResult<long>.Ok(sysGroup.ID);
         }
-        public async Task<ApiResult<List<GroupMenuDto>>> GetGroupMenuDto(long GroupID)
+        public async Task<ApiResult<(List<GroupMenuDto> TreeData, List<string> ExpandedKeys, List<string> CheckdKeys)>> GetGroupMenuDto(long GroupID)
         {
+
             List<SysMenuDto> sysMenus = await _sysMenuService.GetSysMenus();
             List<GroupMenuDto> groupMenuDtos = AutoMapperHelper.MapToList<SysMenuDto, GroupMenuDto>(sysMenus).ToList();
             List<SysMenuGroup> sysMenuGroups = await _sysMenuGroupService.GetSysMenuGroupsByGroupID(GroupID);
@@ -110,15 +113,18 @@ namespace BackManager.Application
                 {
                     gmOpActions.Add(new GroupMenuDto
                     {
-                        ID = soa.ID,
+
                         Name = soa.ActionName,
                         Icon = soa.ActionIcon,
                         GroupMenuType = EGroupMenuType.MenuButton
                     });
                 });
             }
-            newGroupMenuDtos= SetSysMenuDto(0, groupMenuDtos, gmOpActions);
-            return ApiResult<List<GroupMenuDto>>.Ok(newGroupMenuDtos);
+            newGroupMenuDtos = SetSysMenuDto(0, groupMenuDtos, gmOpActions);
+            return ApiResult<(List<GroupMenuDto> TreeData, List<string> ExpandedKeys, List<string> CheckdKeys)>.Ok((
+                newGroupMenuDtos,
+                sysMenus.Select(m => GroupMenuDto.GetMenuNodeKey(m.ID)).ToList(),
+                sysMenuGroupActions.Select(m => GroupMenuDto.GetMenuButtonNodeKey(m.ActionID)).ToList()));
 
         }
         private List<GroupMenuDto> SetSysMenuDto(long FatherID, List<GroupMenuDto> dbSysMenuDtos, List<GroupMenuDto> gmOpActions)
@@ -128,57 +134,115 @@ namespace BackManager.Application
             {
                 List<GroupMenuDto> Children = null;
 
-                if (FatherID == 0)
+
+                Children = dbSysMenuDtos.Where(m => m.FatherID == FatherID).ToList();
+                Children.ForEach(m =>
                 {
-                    Children = dbSysMenuDtos.Where(m => m.FatherID == FatherID).ToList();
-                    Children.ForEach(m =>
-                    {
-                        m.Children = SetSysMenuDto(m.ID, dbSysMenuDtos, gmOpActions);
-                    });
-                }
-                else
-                {
-                    Children = dbSysMenuDtos.Where(m => m.FatherID == FatherID).ToList();
-                    Children.ForEach(m =>
-                    {
-                        m.Children = SetSysMenuDto(m.ID, dbSysMenuDtos, gmOpActions);
-                    });
-                }
+                    m.Children = SetSysMenuDto(m.ID, dbSysMenuDtos, gmOpActions);
+                });
+
                 return Children.OrderBy(m => m.Orderby).ToList();
             }
 
-            return gmOpActions;
+            List<GroupMenuDto> newGmOpActions = AutoMapperHelper
+                .MapToList<GroupMenuDto, GroupMenuDto>(gmOpActions)
+                .ToList();
+
+            newGmOpActions.ForEach(m =>
+            {
+                m.FatherID = FatherID;
+
+            });
+            return newGmOpActions;
         }
 
-        //private List<GroupMenuDto> SetSysMenuDto(long FatherID, List<GroupMenuDto> dbSysMenuDtos, List<GroupMenuDto> groupMenuDtos, List<GroupMenuDto> gmOpActions)
-        //{
+        public async Task<ApiResult<bool>> SaveGroupMenuPower(long GroupID, List<GroupMenuDto> groupMenuDtos)
+        {
+            try
+            {
+                _unitOfWork.BginTran();
+                bool clearMenuGroup = await _sysMenuGroupService.ClearByGroupID(GroupID);
 
-        //    if (dbSysMenuDtos.Any(m => m.FatherID == FatherID))
-        //    {
-        //        List<GroupMenuDto> Children = null;
-
-        //        Children = dbSysMenuDtos.Where(m => m.FatherID == FatherID).ToList();
-        //        Children.ForEach(m =>
-        //        {
-
-        //            m.Children = SetSysMenuDto(m.ID, dbSysMenuDtos, groupMenuDtos, gmOpActions);
-        //            if (m.Children.Count==0)
-        //            {
-        //                m.Children = gmOpActions;
-        //            }
-        //        });
-        //        Children = Children.OrderBy(m => m.Orderby).ToList();
-
-        //        return Children;
-        //    }
-        //    else
-        //    {
-
-        //    }
+                _unitOfWork.SaveChanges();
+                if (groupMenuDtos.Count > 0)
+                {
 
 
-        //    return groupMenuDtos;
-        //}
+                    List<SysMenuGroup> sysMenuGroups = new List<SysMenuGroup>();
+                    Dictionary<long, List<SysMenuGroupAction>> sysMenuGroupActions = new Dictionary<long, List<SysMenuGroupAction>>();
+                    if (groupMenuDtos != null)
+                    {
+                        groupMenuDtos.ForEach(m =>
+                        {
+                            if (m.FatherID > 0)
+                            {
+                                if (!sysMenuGroups.Any(g => g.MenuID == m.FatherID))
+                                {
+                                    sysMenuGroups.Add(new SysMenuGroup
+                                    {
+                                        GroupID = GroupID,
+                                        MenuID = Convert.ToInt64(m.FatherID)
+                                    });
+                                }
+                            }
+                            switch (m.GroupMenuType)
+                            {
+                                case EGroupMenuType.Menu:
+                                    sysMenuGroups.Add(new SysMenuGroup
+                                    {
+                                        GroupID = GroupID,
+                                        MenuID = m.ID
+                                    });
+                                    break;
+                                case EGroupMenuType.MenuButton:
+                                    if (sysMenuGroupActions.ContainsKey(m.ID))
+                                    {
+                                        sysMenuGroupActions[m.ID].Add(new SysMenuGroupAction
+                                        {
+                                            ActionID = m.ID
+                                        });
+                                    }
+                                    else
+                                    {
+                                        sysMenuGroupActions[m.ID] = new List<SysMenuGroupAction>()
+                                        {
+                                    new SysMenuGroupAction{ActionID = m.ID }
+                                        };
+                                    }
+                                    break;
+                            }
+
+                        });
+                        List<SysMenuGroup> newSysMenuGroups = await _sysMenuGroupService.Inserts(sysMenuGroups);
+                        _unitOfWork.SaveChanges();
+                        List<SysMenuGroupAction> newSysMenuGroupActions = new List<SysMenuGroupAction>();
+                        newSysMenuGroups.ForEach(m =>
+                        {
+                            if (m.ID > 0)
+                            {
+                                if (sysMenuGroupActions.ContainsKey(m.MenuID))
+                                {
+                                    sysMenuGroupActions[m.MenuID].ForEach(t =>
+                                    {
+                                        t.MenuGroupID = m.ID;
+                                    });
+                                    newSysMenuGroupActions.AddRange(sysMenuGroupActions[m.MenuID]);
+                                }
+                            }
+                        });
+
+                        bool isSysMenuGroupActions = await _sysMenuGroupActionService.Inserts(newSysMenuGroupActions);
+                    }
+                }
+                _unitOfWork.Commit();
+                return ApiResult<bool>.Ok(true);
+            }
+            catch (Exception ex)
+            {
+                _unitOfWork.Rollback();
+                throw ex;
+            }
+        }
     }
 
 }

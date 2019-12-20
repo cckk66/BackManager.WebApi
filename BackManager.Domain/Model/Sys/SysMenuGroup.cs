@@ -6,7 +6,7 @@ namespace BackManager.Domain.Model.Sys
 {
     public class SysMenuGroup: AggregateRoot
     {
-        public int GroupID { get; set; }
-        public int MenuID { get; set; }
+        public long GroupID { get; set; }
+        public long MenuID { get; set; }
     }
 }

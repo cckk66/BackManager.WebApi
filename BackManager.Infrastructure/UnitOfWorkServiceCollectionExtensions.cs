@@ -18,6 +18,7 @@ namespace UnitOfWork
         {
             services.RegisterType<UnitOfWork<TContext>>().As<IUnitOfWork>().InstancePerLifetimeScope();//：同一个Lifetime生成的对象是同一个实例
 
+
             //services.RegisterGeneric(typeof(UnitOfWork<TContext>)).As(typeof(IUnitOfWork)).InstancePerLifetimeScope();//注册仓储泛型
             //InstancePerLifetimeScope：同一个Lifetime生成的对象是同一个实例
 

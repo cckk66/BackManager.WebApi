@@ -30,6 +30,8 @@ namespace UnitOfWork
         public DbSet<SysOpAction> SysOpActions { get; set; }
         public DbSet<SysMenuGroup> SysMenuGroups { get; set; }
         public DbSet<SysMenuGroupAction> SysMenuGroupActions { get; set; }
+        public DbSet<SysUserSecretInsuranceCard> SysUserSecretInsuranceCards { get; set; }
+        
         public DbSet<DTTest> DTTests { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -58,6 +60,7 @@ namespace UnitOfWork
                 //.HasForeignKey(p => p.ID);
 
             modelBuilder.Entity<SysMenuGroupAction>().ToTable("SysMenuGroupAction");
+            modelBuilder.Entity<SysUserSecretInsuranceCard>().ToTable("SysUserSecretInsuranceCard");
             modelBuilder.Entity<DTTest>().ToTable("DTTest");
 
 

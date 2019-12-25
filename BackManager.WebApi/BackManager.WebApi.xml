@@ -11,6 +11,20 @@
             <param Name="loginUserDto"></param>
             <returns></returns>
         </member>
+        <member name="M:BackManager.WebApi.Controllers.LoginController.MatrixCardValidate(BackManager.Common.DtoModel.Model.Login.MatrixCardDto)">
+            <summary>
+            密保校验
+            </summary>
+            <param name="matrixCardDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.LoginController.UpUserPassword(BackManager.Common.DtoModel.Model.Login.ReUserPasswordDto)">
+            <summary>
+            修改密码
+            </summary>
+            <param name="userPasswordDto"></param>
+            <returns></returns>
+        </member>
         <member name="M:BackManager.WebApi.Controllers.Sys.SysGroupController.SysGroupPage(BackManager.Domain.DomainDrive.QueryParameter{BackManager.Common.DtoModel.Model.SysGroupParameter})">
             <summary>
             用户分组分页
@@ -148,6 +162,12 @@
         <member name="M:BackManager.WebApi.Controllers.Sys.SysUserController.LogOut">
             <summary>
             用户测试
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BackManager.WebApi.Controllers.Sys.SysUserController.GetMatrixCard(System.Int64)">
+            <summary>
+            获取密保卡
             </summary>
             <returns></returns>
         </member>

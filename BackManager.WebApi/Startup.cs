@@ -6,10 +6,12 @@ using BackManager.Utility.Common;
 using BackManager.Utility.Filter;
 using BackManager.Utility.Middleware;
 using BackManager.Utility.Middleware.ErrorMiddleware;
+using BackManager.Utility.MySecretInsuranceCard;
 using BackManager.Utility.Tool.Swagger;
 using BackManager.WebApi.Utility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Redis;
 //using Microsoft.EntityFrameworkCore;
@@ -84,7 +86,9 @@ namespace BackManager.WebApi
 
             });
             #endregion
-
+            #region 添加请求帮助类
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            #endregion
             #region 允许同步读取
             // 解决错误  Synchronous operations are disallowed. Call WriteAsync or set AllowSynchronousIO to true instead
             //services.Configure<IISServerOptions>(options =>
@@ -160,6 +164,8 @@ namespace BackManager.WebApi
                     options.UseMySql(Configuration.GetConnectionString("MySqlConnectionString"));
                 }
             });
+            //添加密保
+            services.AddSecretInsuranceCard();
             services.AddSignalR();
 
 

@@ -47,5 +47,10 @@ namespace BackManager.Common.DtoModel
         public RouterDto MenuList { get; set; }
         [JsonProperty("token")]
         public string Token { get; set; }
+        #region 密码卡信息
+        public int[] Row { get; set; }
+        public int[] Col { get; set; }
+        public string PromptingLanguage { get; set; }
+        #endregion
     }
 }

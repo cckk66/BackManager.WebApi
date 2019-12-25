@@ -19,6 +19,16 @@
             登录密码
             </summary>
         </member>
+        <member name="T:BackManager.Common.DtoModel.Model.Login.ReUserPasswordDto">
+            <summary>
+            修改密码
+            </summary>
+        </member>
+        <member name="T:BackManager.Common.DtoModel.Model.Login.MatrixCardDto">
+            <summary>
+            密码校验类
+            </summary>
+        </member>
         <member name="T:BackManager.Common.DtoModel.Model.SysModel.ExceptionLogParameter">
             <summary>
             错误日志参数

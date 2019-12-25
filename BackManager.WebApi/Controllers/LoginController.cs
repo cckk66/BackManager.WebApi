@@ -32,5 +32,28 @@ namespace BackManager.WebApi.Controllers
 
             return Ok(sysUser);
         }
+
+        /// <summary>
+        /// 密保校验
+        /// </summary>
+        /// <param name="matrixCardDto"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> MatrixCardValidate([FromBody]MatrixCardDto matrixCardDto)
+        {
+            ApiResult<bool> IsMatrixCard = await _sysUserService.MatrixCardValidate(matrixCardDto.Row, matrixCardDto.Col, matrixCardDto.CellData, matrixCardDto.UserID);
+            return Ok(IsMatrixCard);
+        }
+
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="userPasswordDto"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> UpUserPassword([FromBody]ReUserPasswordDto userPasswordDto)
+        {
+            return Ok(await _sysUserService.ReUserPassword(userPasswordDto));
+        }
     }
 }

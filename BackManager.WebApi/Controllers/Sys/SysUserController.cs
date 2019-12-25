@@ -61,5 +61,14 @@ namespace BackManager.WebApi.Controllers.Sys
         {
             return Ok(new { });
         }
+        /// <summary>
+        /// 获取密保卡
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetMatrixCard(long UserID)
+        {
+            return Ok(await _sysUserService.GetMatrixCard(UserID));
+        }
     }
 }

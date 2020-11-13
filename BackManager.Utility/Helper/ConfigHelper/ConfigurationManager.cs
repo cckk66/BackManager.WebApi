@@ -11,13 +11,11 @@ namespace BackManager.Utility.Helper
         //索引器必须以this关键字定义，其实这个this就是类实例化之后的对象
         public T this[string index] => ConfigurationManager.GetAppSettings<T>(index);
     }
-    public static class ConfigurationManager
-    {
-
-        //private static readonly ILog log = new Log();
-        //索引器必须以this关键字定义，其实这个this就是类实例化之后的对象
-
-        public static T GetAppSettings<T>(string key) where T : class, new()
+    public static T GetAppSettings<T>(string key) where T : class, new()
+        {
+            return GetAppSettings<T>(key, "appsettings.json");
+        }
+        public static T GetAppSettings<T>(string key,string Path) where T : class, new()
         {
             string baseDir = AppContext.BaseDirectory;
             int indexBin = baseDir.IndexOf("bin");
@@ -37,7 +35,7 @@ namespace BackManager.Utility.Helper
 
             IConfiguration config = new ConfigurationBuilder()
                 .SetBasePath(currentClassDir)
-                .Add(new JsonConfigurationSource { Path = "appsettings.json", Optional = false, ReloadOnChange = true })
+                .Add(new JsonConfigurationSource { Path = Path, Optional = false, ReloadOnChange = true })
                 .Build();
 
             T appconfig = new ServiceCollection()
@@ -48,5 +46,4 @@ namespace BackManager.Utility.Helper
                 .Value;
             return appconfig;
         }
-    }
 }

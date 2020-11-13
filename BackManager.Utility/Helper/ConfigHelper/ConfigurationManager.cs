@@ -47,3 +47,4 @@ namespace BackManager.Utility.Helper
             return appconfig;
         }
 }
+}
